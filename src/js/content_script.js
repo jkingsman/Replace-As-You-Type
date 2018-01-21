@@ -64,7 +64,6 @@ function handleKeyPress(event){
         if(replacement){
             // we have a match
             if(isEditableDiv) {
-                console.log(1)
                 var location = srcElement.innerHTML.lastIndexOf(lastWord);
                 backOut = srcElement.innerHTML;
                 srcElement.innerHTML = srcElement.innerHTML.substring(0, location) + replacement;
