@@ -35,9 +35,13 @@ var isEditableDiv = false;
 
 function handleKeyPress(event){
     var srcElement = event.srcElement;
-
     if (srcElement.tagName == "DIV" && srcElement.isContentEditable){
         isEditableDiv = true;
+
+        while (srcElement.children.length > 0){
+            // we have nested divs
+            srcElement = srcElement.lastChild;
+        }
     } else {
         isEditableDiv = false;
         if(srcElement.type != 'text' && srcElement.type != 'textarea'){ //
