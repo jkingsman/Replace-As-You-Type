@@ -104,4 +104,4 @@ function checkReplacement(search){
 }
 
 // bind the listener
-document.addEventListener('keydown', handleKeyPress);
+document.addEventListener('keypress', handleKeyPress);
