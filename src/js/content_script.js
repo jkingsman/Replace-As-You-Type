@@ -103,5 +103,6 @@ function checkReplacement(search){
     return null;
 }
 
-// bind the listener
-document.addEventListener('keypress', handleKeyPress);
+// bind the listener; need both because backspace only fires keyDown
+document.addEventListener('keypress', handleKeyPress, true);
+document.addEventListener('keydown', handleKeyPress, true);
