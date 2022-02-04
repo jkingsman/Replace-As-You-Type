@@ -1,7 +1,7 @@
 {
     "manifest_version":2,
     "name":"Replace as You Type",
-    "version":"0.0.4",
+    "version":"0.0.5",
     "description":"Replace emoticons with emoji and other text replacement as you type -- now works on Facebook, WhatsApp, etc.",
     "author":"Jack Kingsman <jack.kingsman@gmail.com>",
     "icons":{

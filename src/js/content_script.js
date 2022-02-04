@@ -58,6 +58,9 @@ function handleKeyPress(event){
             words = srcElement.value.split(' ');
         }
 
+        // remove the last space
+        words.pop();
+
         var lastWord = words[words.length - 1];
 
         var replacement = checkReplacement(lastWord);
@@ -66,12 +69,12 @@ function handleKeyPress(event){
             if(isEditableDiv) {
                 var location = srcElement.innerHTML.lastIndexOf(lastWord);
                 backOut = srcElement.innerHTML;
-                srcElement.innerHTML = srcElement.innerHTML.substring(0, location) + replacement;
-                moveCursorToEnd(srcElement);
+                srcElement.innerHTML = srcElement.innerHTML.substring(0, location) + replacement + ' ';
+                // moveCursorToEnd(srcElement);
             } else {
                 var location = srcElement.value.lastIndexOf(lastWord);
                 backOut = srcElement.value;
-                srcElement.value = srcElement.value.substring(0, location) + replacement;
+                srcElement.value = srcElement.value.substring(0, location) + replacement + ' ';
             }
         }
 
@@ -80,11 +83,11 @@ function handleKeyPress(event){
         event.preventDefault(); // we don't actually want that backspace getting through
 
         if(isEditableDiv) {
-            srcElement.innerHTML = backOut + ' ';
+            srcElement.innerHTML = backOut;
             moveCursorToEnd(srcElement);
             backOut = null;
         } else {
-            srcElement.value = backOut + ' ';
+            srcElement.value = backOut;
             backOut = null;
         }
     } else {
@@ -103,6 +106,5 @@ function checkReplacement(search){
     return null;
 }
 
-// bind the listener; need both because backspace only fires keyDown
-document.addEventListener('keypress', handleKeyPress, true);
-document.addEventListener('keydown', handleKeyPress, true);
+// need keyup because backspace doesn't fire keypress
+document.addEventListener('keyup', handleKeyPress, true);
